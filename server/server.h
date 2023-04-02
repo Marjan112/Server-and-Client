@@ -20,9 +20,9 @@ public:
     struct sockaddr_in addr1;
     struct sockaddr_in addr2;
     Server(int domain, int type, int protocol, unsigned short family, unsigned short port, std::string ip);
-    void Bind(struct sockaddr_in my_addr);
+    void Bind(struct sockaddr_in addr);
     void ListenForConnection(int n);
-    void AcceptConnection(struct sockaddr_in con_addr);
+    void AcceptConnection(struct sockaddr_in addr);
     void RecvMessage();
     void Free();
 };

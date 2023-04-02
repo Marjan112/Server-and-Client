@@ -12,8 +12,8 @@ Server::Server(int domain, int type, int protocol, unsigned short family, unsign
     addr1.sin_zero[8] = '\0';
 }
 
-void Server::Bind(struct sockaddr_in addr1) {
-    if(bind(sockfd, (struct sockaddr*)&addr1, sizeof(struct sockaddr)) < 0) {
+void Server::Bind(struct sockaddr_in addr) {
+    if(bind(sockfd, (struct sockaddr*)&addr, sizeof(struct sockaddr)) < 0) {
         perror("bind");
         quick_exit(-1);
     }
@@ -26,9 +26,9 @@ void Server::ListenForConnection(int n) {
     }
 }
 
-void Server::AcceptConnection(struct sockaddr_in addr2) {
+void Server::AcceptConnection(struct sockaddr_in addr) {
     struct_size = sizeof(addr2);
-    clientfd = accept(sockfd, (struct sockaddr*)&addr2, &struct_size);
+    clientfd = accept(sockfd, (struct sockaddr*)&addr, &struct_size);
     if(clientfd < 0) {
         perror("accept");
         quick_exit(-1);
