@@ -27,7 +27,7 @@ void Server::ListenForConnection(int n) {
 }
 
 void Server::AcceptConnection(struct sockaddr_in addr) {
-    struct_size = sizeof(addr2);
+    struct_size = sizeof(addr);
     clientfd = accept(sockfd, (struct sockaddr*)&addr, &struct_size);
     if(clientfd < 0) {
         perror("accept");
