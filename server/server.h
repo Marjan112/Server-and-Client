@@ -17,9 +17,9 @@ private:
     int bytes_read;
     char msg[128];
 public:
-    struct sockaddr_in my_addr;
-    struct sockaddr_in con_addr;
-    Server(int domain, int service, int protocol, unsigned short family, unsigned short port, std::string ip);
+    struct sockaddr_in addr1;
+    struct sockaddr_in addr2;
+    Server(int domain, int type, int protocol, unsigned short family, unsigned short port, std::string ip);
     void Bind(struct sockaddr_in my_addr);
     void ListenForConnection(int n);
     void AcceptConnection(struct sockaddr_in con_addr);

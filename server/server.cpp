@@ -1,19 +1,19 @@
 #include "server.h"
 
-Server::Server(int domain, int service, int protocol, unsigned short family, unsigned short port, std::string ip) {
-    sockfd = socket(domain, service, protocol);
+Server::Server(int domain, int type, int protocol, unsigned short family, unsigned short port, std::string ip) {
+    sockfd = socket(domain, type, protocol);
     if(sockfd < 0) {
         perror("socket");
         quick_exit(-1);
     }
-    my_addr.sin_family = family;
-    my_addr.sin_port = htons(port);
-    my_addr.sin_addr.s_addr = inet_addr(ip.c_str());
-    my_addr.sin_zero[8] = '\0';
+    addr1.sin_family = family;
+    addr1.sin_port = htons(port);
+    addr1.sin_addr.s_addr = inet_addr(ip.c_str());
+    addr1.sin_zero[8] = '\0';
 }
 
-void Server::Bind(struct sockaddr_in my_addr) {
-    if(bind(sockfd, (struct sockaddr*)&my_addr, sizeof(struct sockaddr)) < 0) {
+void Server::Bind(struct sockaddr_in addr1) {
+    if(bind(sockfd, (struct sockaddr*)&addr1, sizeof(struct sockaddr)) < 0) {
         perror("bind");
         quick_exit(-1);
     }
@@ -26,9 +26,9 @@ void Server::ListenForConnection(int n) {
     }
 }
 
-void Server::AcceptConnection(struct sockaddr_in con_addr) {
-    struct_size = sizeof(con_addr);
-    clientfd = accept(sockfd, (struct sockaddr*)&con_addr, &struct_size);
+void Server::AcceptConnection(struct sockaddr_in addr2) {
+    struct_size = sizeof(addr2);
+    clientfd = accept(sockfd, (struct sockaddr*)&addr2, &struct_size);
     if(clientfd < 0) {
         perror("accept");
         quick_exit(-1);

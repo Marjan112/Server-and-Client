@@ -14,7 +14,7 @@ private:
     int sockfd;
 public:
     struct sockaddr_in dest_addr;
-    Client(int domain, int service, int protocol, unsigned short family, unsigned short port, std::string ip);
+    Client(int domain, int type, int protocol, unsigned short family, unsigned short port, std::string ip);
     void Connect(struct sockaddr_in dest_addr);
     void SendMessage(std::string msg);
 };

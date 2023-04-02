@@ -1,7 +1,7 @@
 #include "client.h"
 
-Client::Client(int domain, int service, int protocol, unsigned short family, unsigned short port, std::string ip) {
-    sockfd = socket(domain, service, protocol);
+Client::Client(int domain, int type, int protocol, unsigned short family, unsigned short port, std::string ip) {
+    sockfd = socket(domain, type, protocol);
     if(sockfd < 0) {
         perror("socket");
         quick_exit(-1);
