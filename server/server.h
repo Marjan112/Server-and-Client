@@ -21,7 +21,7 @@ public:
     struct sockaddr_in con_addr;
     Server(int domain, int service, int protocol, unsigned short family, unsigned short port, std::string ip);
     void Bind(struct sockaddr_in my_addr);
-    void ListenForConnection(int clients);
+    void ListenForConnection(int n);
     void AcceptConnection(struct sockaddr_in con_addr);
     void RecvMessage();
     void Free();

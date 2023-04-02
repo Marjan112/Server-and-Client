@@ -19,8 +19,8 @@ void Server::Bind(struct sockaddr_in my_addr) {
     }
 }
 
-void Server::ListenForConnection(int clients) {
-    if(listen(sockfd, clients) < 0) {
+void Server::ListenForConnection(int n) {
+    if(listen(sockfd, n) < 0) {
         perror("listen");
         quick_exit(-1);
     }
