@@ -25,3 +25,7 @@ void Client::SendMessage(std::string msg) {
         quick_exit(-1);
     }
 }
+
+void Client::Free() {
+    close(sockfd);
+}
