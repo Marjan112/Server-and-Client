@@ -27,4 +27,4 @@ public:
     void Free();
 };
 
-#endif
+#endif /* SERVER_H */

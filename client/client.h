@@ -20,4 +20,4 @@ public:
     void Free();
 };
 
-#endif
+#endif /* CLIENT_H */
