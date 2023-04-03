@@ -13,7 +13,7 @@ int main() {
     std::cin >> str;
     char msg[128];
     if(str == TOLOWER("Y")) {
-        Client client(AF_INET, SOCK_STREAM, NULL, AF_INET, 4761, "127.0.0.1");
+        Client client(AF_INET, SOCK_STREAM, 0, AF_INET, 4761, "127.0.0.1");
         client.Connect(client.dest_addr);
         std::cout << "Send message: ";
         std::cin.getline(msg, sizeof(msg));
