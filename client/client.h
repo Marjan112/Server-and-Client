@@ -17,7 +17,7 @@ public:
     Client(int domain, int type, int protocol, unsigned short family, unsigned short port, std::string ip);
     void Connect(struct sockaddr_in dest_addr);
     void SendMessage(std::string msg);
-    void Free(); 
+    void Free();
 };
 
 #endif
