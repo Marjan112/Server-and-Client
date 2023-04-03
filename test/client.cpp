@@ -7,5 +7,6 @@ int main() {
     std::cout << "Send message: ";
     std::cin.getline(msg, sizeof(msg));
     client.SendMessage(msg);
+    client.Free();
     return 0;
 }
