@@ -1,8 +1,8 @@
 #include "server.h"
 
 Server::Server(int domain, int type, int protocol, unsigned short family, unsigned short port, std::string ip) {
-    sockfd = socket(domain, type, protocol);
-    if(sockfd < 0) {
+    
+    if((sockfd = socket(domain, type, protocol)) < 0) {
         perror("socket");
         quick_exit(-1);
     }
@@ -28,16 +28,14 @@ void Server::ListenForConnection(int n) {
 
 void Server::AcceptConnection(struct sockaddr_in addr) {
     struct_size = sizeof(addr);
-    clientfd = accept(sockfd, (struct sockaddr*)&addr, &struct_size);
-    if(clientfd < 0) {
+    if((clientfd = accept(sockfd, (struct sockaddr*)&addr, &struct_size)) < 0) {
         perror("accept");
         quick_exit(-1);
     }
 }
 
 void Server::RecvMessage() {
-    bytes_read = read(clientfd, msg, sizeof(msg));
-    if(bytes_read < 0) {
+    if((bytes_read = read(clientfd, msg, sizeof(msg))) < 0) {
         perror("read");
         quick_exit(-1);
     }
