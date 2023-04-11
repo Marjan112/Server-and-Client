@@ -2,8 +2,7 @@
 
 Client::Client(int domain, int type, int protocol, unsigned short family, unsigned short port, std::string ip) {
     if((sockfd = socket(domain, type, protocol)) < 0) {
-        perror("socket");
-        quick_exit(-1);
+        throw("socket");
     }
     dest_addr.sin_family = family;
     dest_addr.sin_port = htons(port);
@@ -13,15 +12,13 @@ Client::Client(int domain, int type, int protocol, unsigned short family, unsign
 
 void Client::Connect(struct sockaddr_in dest_addr) {
     if(connect(sockfd, (struct sockaddr*)&dest_addr, sizeof(struct sockaddr)) < 0) {
-        perror("connect");
-        quick_exit(-1);
+        throw("connect");
     }
 }
 
 void Client::SendMessage(std::string msg) {
     if(write(sockfd, (void*)msg.c_str(), msg.size()) < 0) {
-        perror("write");
-        quick_exit(-1);
+        throw("write");
     }
 }
 
