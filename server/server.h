@@ -1,11 +1,15 @@
 #ifndef SERVER_H
 #define SERVER_H
 
+#ifdef __linux__
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
+#elif defined(WIN32)
+#include <Windows.h>
+#endif
 #include <iostream>
 #include <unistd.h>
 
