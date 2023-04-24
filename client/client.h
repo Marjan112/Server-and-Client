@@ -1,13 +1,17 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#ifdef __linux__
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
-#include <iostream>
 #include <unistd.h>
+#elif defined WIN32
+#include <Windows.h>
+#endif
+#include <iostream>
 
 class Client {
 private:

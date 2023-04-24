@@ -7,7 +7,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
-#elif defined(WIN32)
+#elif defined WIN32
 #include <Windows.h>
 #endif
 #include <iostream>
